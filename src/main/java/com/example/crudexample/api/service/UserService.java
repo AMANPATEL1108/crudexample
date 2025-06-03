@@ -36,13 +36,27 @@ public class UserService {
     public String updateById(Integer id, User user) {
         Optional<User> optionalUser = userRepo.findById(id);
         if (optionalUser.isPresent()) {
-            user.setId(id);
-            userRepo.save(user);
-            return "User details Successfully Updated";
+            User existingUser = optionalUser.get();
+
+            System.out.println("sdfjbs"+optionalUser.get());
+
+            if (user.getName() != null) {
+                existingUser.setName(user.getName());
+            }
+            if (user.getEmail() != null) {
+                existingUser.setEmail(user.getEmail());
+            }
+            if (user.getAddress() != null) {
+                existingUser.setAddress(user.getAddress());
+            }
+
+            userRepo.save(existingUser);
+            return "User details successfully updated.";
         } else {
             return "User not found with ID: " + id;
         }
     }
+
 
 
 }
