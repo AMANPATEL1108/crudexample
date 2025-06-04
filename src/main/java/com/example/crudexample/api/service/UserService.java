@@ -38,7 +38,6 @@ public class UserService {
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
 
-            System.out.println("sdfjbs"+optionalUser.get());
 
             if (user.getName() != null) {
                 existingUser.setName(user.getName());
